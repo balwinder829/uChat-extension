@@ -1,18 +1,28 @@
 {
   "manifest_version": 3,
-  "name": "uChat Extension",
+  "name": "Cig Chat",
+  "description": "Chat on Fireberry",
   "version": "1.0",
-  "description": "uChat Extension",
-  "permissions": ["activeTab", "scripting"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "permissions": [
+   "activeTab",
+    "scripting",
+    "declarativeContent"
+  ],
   "action": {
     "default_popup": "index.html"
   },
+  "icons": {
+        "16": "wow-by-ebs.png",
+        "32": "wow-by-ebs.png",
+        "48": "wow-by-ebs.png",
+        "128": "wow-by-ebs.png"
+    },
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.fireberry.com/*"],
+      "matches": ["*://app.fireberry.com/*"],
       "js": ["content.js"]
     }
   ]

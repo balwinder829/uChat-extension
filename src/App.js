@@ -1,23 +1,17 @@
-/*global chrome*/
-
-import { useEffect } from 'react';
 import './App.css';
+import { CssBaseline } from '@mui/material';
 import LoginForm from './components/LoginForm';
+import { Box } from '@mui/material';
 
 function App() {
- 
-  useEffect(() => {
-    console.log('app loaded');
 
-    chrome?.tabs?.query({ active: true, currentWindow: true }, (tabs) => {
-      console.log(tabs,'tabssssss')
-    });
-  }, []);
   return (
-    <div className="App">
-      <LoginForm />
-    </div>
+    <Box>
+        <CssBaseline />
+        <LoginForm />
+    </Box>
   );
 }
+
 
 export default App;

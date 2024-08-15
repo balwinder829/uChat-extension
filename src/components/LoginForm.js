@@ -3,43 +3,33 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Container, InputAdornment } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import axios from 'axios';
 
 const LoginForm = ({isIframeVisible, setIsIframeVisible}) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [show, setShow] = useState(false)
-  const [errors, setErrors] = useState({});
-  const [token, setToken] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [show, setShow] = useState(false)
+  // const [errors, setErrors] = useState({});
 
-
-
-  const validate = () => {
-    const errors = {};
-    if (!username) {
-      errors.username = 'Username is required';
-    }
-    if (!password) {
-      errors.password = 'Password is required';
-    }
-    return errors;
-  };
+  // const validate = () => {
+  //   const errors = {};
+  //   if (!username) {
+  //     errors.username = 'Username is required';
+  //   }
+  //   if (!password) {
+  //     errors.password = 'Password is required';
+  //   }
+  //   return errors;
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
-  const errors = validate();
-    setErrors(errors);
-    if (Object.keys(errors).length === 0) {
-      chrome.runtime.sendMessage({
-        action: 'injectIframe',
-        url: 'https://app.fireberry.com' // Replace with the actual URL you want to open
-      });
-      }
+  // const errors = validate();
+    // setErrors(errors);
+    // if (Object.keys(errors).length === 0) {
+      chrome.runtime.sendMessage({ type: 'LOGIN_SUBMIT' });
+      // }
   };
 
-
-
   return (
-    <>
     <Container component="div" sx={{width:isIframeVisible ? '100%' : '350px', display:'flex', justifyContent:'center'}}>
       <Box
         sx={{
@@ -48,12 +38,12 @@ const LoginForm = ({isIframeVisible, setIsIframeVisible}) => {
             flexDirection: 'column',
             alignItems: 'center',
             width:'350px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            // boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         }}
       >
-        <Box sx={{backgroundColor:'#2a3847', color:'white', padding:'10px',textAlign:'end', width:'100%'}}>Fireberry Login</Box>
+        <Box sx={{color:'black', padding:'10px',textAlign:'center', width:'100%'}}>Click to Open Chat Option</Box>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{padding:'0px 15px 15px 15px '}}>
-          <TextField
+          {/* <TextField
             variant="outlined"
             margin="normal"
             required
@@ -98,23 +88,19 @@ const LoginForm = ({isIframeVisible, setIsIframeVisible}) => {
             )}}
             error={errors.password ? true : false}
             helperText={errors.password}
-          />
+          /> */}
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            sx={{ mt: 2, mb: 2, backgroundColor:'#2a3847' }}
+            sx={{ mt: 2, mb: 2, backgroundColor:'#2a3847', textTransform:'math-auto' }}
           >
-            Sign In
+          Open uChat
           </Button>
         </Box>
       </Box>
-   
     </Container>
-    
-   
-    </>
   );
 };
 
