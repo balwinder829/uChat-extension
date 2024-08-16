@@ -11,3 +11,8 @@ function handleRowClick() {
     console.log('2121212122')
     row.addEventListener('click', handleRowClick);
   });
+
+navigation.addEventListener("navigate", e => {
+  console.log(e.destination.url, "b   ");
+  chrome.runtime.sendMessage({ type: 'URL_CHANGE' });
+});

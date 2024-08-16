@@ -14,6 +14,8 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log(message);
+  //alert(message);
   if (message.type === 'LOGIN_SUBMIT') {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const activeTab = tabs[0];
