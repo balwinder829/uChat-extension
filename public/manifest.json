@@ -4,9 +4,9 @@
   "description": "Chat on Fireberry",
   "version": "1.0",
   "permissions": [
-   "activeTab",
-    "scripting",
-    "declarativeContent"
+    "tabs",
+    "activeTab",
+    "scripting"
   ],
   "action": {
     "default_popup": "index.html"
