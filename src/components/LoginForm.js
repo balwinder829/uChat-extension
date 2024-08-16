@@ -94,6 +94,7 @@ const LoginForm = ({isIframeVisible, setIsIframeVisible}) => {
             fullWidth
             variant="contained"
             color="primary"
+            className="open-chat"
             sx={{ mt: 2, mb: 2, backgroundColor:'#2a3847', textTransform:'math-auto' }}
           >
           Open uChat
