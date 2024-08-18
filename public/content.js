@@ -11,10 +11,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   });
 
   function handleRowClick() {
+  console.log('oncclik')
+
     chrome.runtime.sendMessage({ type: 'ROW_CLICKED' });
   }
 
-  console.log('1111111')
   
   // Add event listener to each table row
   document.querySelectorAll('table tr').forEach(row => {
@@ -29,17 +30,12 @@ navigation.addEventListener("navigate", e => {
   });
 });
   
-// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-//     console.log(message,'messagemessage33222')
-//     if (message.type === 'URL_CHANGED') {
-//     //   reloadAccordion();
-//     console.log('12121212121212')
-//       chrome.runtime.sendMessage({ type: 'LOGIN_SUBMIT' });
-//     }
-//   });
-  
-
 function injectIframeOverlay() {
+    const existingIframeDiv = document.getElementById('custom-iframe-container');
+    if (existingIframeDiv) {
+        return;
+    }
+
     const iframeDiv = document.createElement('div');
   iframeDiv.id = 'custom-iframe-container';
   iframeDiv.style.position = 'fixed';
@@ -131,4 +127,12 @@ function injectIframeOverlay() {
   iframeDiv.addEventListener('transitionend', () => {
     iframe.style.display = iframeDiv.style.height === '45px' ? 'none' : 'block';
   });
+
+  sessionStorage.setItem('chatIconInjected', 'true');
+
   }
+
+
+  if (sessionStorage.getItem('chatIconInjected') === 'true') {
+    injectIframeOverlay();
+}
